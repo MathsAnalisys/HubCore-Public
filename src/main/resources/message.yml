@@ -3,3 +3,5 @@ Message:
     - "This is a public plugin"
     - "Thanks for support me!"
     - "Follow me on github."
+  OnJoinWelcomeMessage: "&7[&a+ &f%hubcore_player%]"
+  OnQuitWelcomeMessage: "&7[&c- &f%hubcore_player%]"

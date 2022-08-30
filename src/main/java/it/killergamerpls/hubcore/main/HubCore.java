@@ -1,6 +1,8 @@
 package it.killergamerpls.hubcore.main;
 
+import it.killergamerpls.hubcore.bungee.BungeeCounterListener;
 import it.killergamerpls.hubcore.listener.WorldListener;
+import it.killergamerpls.hubcore.provider.ProviderManager;
 import it.killergamerpls.hubcore.utils.ConfigFile;
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -15,18 +17,22 @@ public class HubCore {
     private JavaPlugin plugin;
     private ConfigFile config;
     private ConfigFile message;
+    private ProviderManager providerManager;
 
 
     public HubCore(JavaPlugin plugin){
         this.plugin = plugin;
 
-        loadConfig();
-        loadListenerAndCommands();
+        loadManager();
     }
 
-    private void loadConfig(){
-        this.config = new ConfigFile(plugin, "config.yml");
-        this.message = new ConfigFile(plugin, "message.yml");
+
+    private void loadManager(){
+        this.providerManager = new ProviderManager();
+
+        registerBungeeListeners();
+        loadConfig();
+        loadListenerAndCommands();
     }
 
     private void loadListenerAndCommands(){
@@ -35,6 +41,15 @@ public class HubCore {
         ).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, plugin));
     }
 
+    private void loadConfig(){
+        this.config = new ConfigFile(plugin, "config.yml");
+        this.message = new ConfigFile(plugin, "message.yml");
+    }
+
+    private void registerBungeeListeners(){
+        plugin.getServer().getMessenger().registerOutgoingPluginChannel(plugin, "BungeeCord");
+        plugin.getServer().getMessenger().registerIncomingPluginChannel(plugin, "BungeeCord", new BungeeCounterListener());
+    }
 
     public static HubCore get(){
         return instance;
