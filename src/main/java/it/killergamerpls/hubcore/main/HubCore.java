@@ -1,6 +1,8 @@
 package it.killergamerpls.hubcore.main;
 
 import it.killergamerpls.hubcore.bungee.BungeeCounterListener;
+import it.killergamerpls.hubcore.commands.SpawnCommand;
+import it.killergamerpls.hubcore.commands.staff.SetspawnCommand;
 import it.killergamerpls.hubcore.listener.WorldListener;
 import it.killergamerpls.hubcore.provider.ProviderManager;
 import it.killergamerpls.hubcore.utils.ConfigFile;
@@ -39,6 +41,11 @@ public class HubCore {
         List.of(
                 new WorldListener()
         ).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, plugin));
+
+        List.of(
+                new SetspawnCommand(),
+                new SpawnCommand()
+        ).forEach(command-> Bukkit.getCommandMap().register(plugin.getName(), command));
     }
 
     private void loadConfig(){

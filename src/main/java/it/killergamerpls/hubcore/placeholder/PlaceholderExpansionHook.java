@@ -2,6 +2,7 @@ package it.killergamerpls.hubcore.placeholder;
 
 import it.killergamerpls.hubcore.bungee.PlayerCounterGlobal;
 import it.killergamerpls.hubcore.main.HubCore;
+import it.killergamerpls.hubcore.utils.LuckPermsUtils;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -42,6 +43,14 @@ public class PlaceholderExpansionHook extends PlaceholderExpansion {
 
         if (match.equalsIgnoreCase("ping")){
             return String.valueOf(player.getPing());
+        }
+
+        if(match.equalsIgnoreCase("prefix_rank")){
+            return LuckPermsUtils.getPrefix(player);
+        }
+
+        if (match.equalsIgnoreCase("color_rank")){
+            return LuckPermsUtils.getRankColor(player)
         }
 
         if (match.equalsIgnoreCase("globalOnline")){
