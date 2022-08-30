@@ -1,5 +1,6 @@
 package it.killergamerpls.hubcore.placeholder;
 
+import it.killergamerpls.hubcore.bungee.PlayerCounterGlobal;
 import it.killergamerpls.hubcore.main.HubCore;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
@@ -37,6 +38,14 @@ public class PlaceholderExpansionHook extends PlaceholderExpansion {
     public @Nullable String onPlaceholderRequest(Player player, @NotNull String match) {
         if (match.equalsIgnoreCase("player")){
             return player.getName();
+        }
+
+        if (match.equalsIgnoreCase("ping")){
+            return String.valueOf(player.getPing());
+        }
+
+        if (match.equalsIgnoreCase("globalOnline")){
+            return String.valueOf(PlayerCounterGlobal.GLOBAL_ONLINE);
         }
 
         return null;
