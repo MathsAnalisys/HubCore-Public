@@ -1,0 +1,4 @@
+Message:
+  OnJoin:
+    - "This is a public plugin"
+    - "Thanks for support me!"
