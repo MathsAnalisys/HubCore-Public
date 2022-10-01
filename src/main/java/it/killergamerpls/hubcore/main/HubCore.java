@@ -1,17 +1,21 @@
 package it.killergamerpls.hubcore.main;
 
 import it.killergamerpls.hubcore.bungee.BungeeCounterListener;
+import it.killergamerpls.hubcore.bungee.utils.BungeeServerUtils;
 import it.killergamerpls.hubcore.commands.SpawnCommand;
 import it.killergamerpls.hubcore.commands.staff.SetspawnCommand;
 import it.killergamerpls.hubcore.listener.WorldListener;
 import it.killergamerpls.hubcore.provider.ProviderManager;
 import it.killergamerpls.hubcore.utils.ConfigFile;
 import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
+
 @Getter
+@Setter
 public class HubCore {
 
     @Getter
@@ -20,6 +24,7 @@ public class HubCore {
     private ConfigFile config;
     private ConfigFile message;
     private ProviderManager providerManager;
+    private BungeeServerUtils bungeeServerUtils;
 
 
     public HubCore(JavaPlugin plugin){
@@ -31,6 +36,7 @@ public class HubCore {
 
     private void loadManager(){
         this.providerManager = new ProviderManager();
+        this.bungeeServerUtils = new BungeeServerUtils();
 
         registerBungeeListeners();
         loadConfig();
