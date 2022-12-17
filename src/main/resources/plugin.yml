@@ -1,5 +1,5 @@
 name: HubCore-Public
-main: it.killergamerpls.hubcore.main.HubCoreMain
+main: it.mathanalisys.hubcore.HubCore
 version: ${git.commit.id.abbrev}
 api-version: 1.15
 author: KillerGamerPls

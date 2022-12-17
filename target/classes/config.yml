@@ -1,2 +1,15 @@
 Settings:
   permissionBreakAndPlace: "hubcore.breakorplace"
+  onJoinMessage: false
+  onQuitMessage: false
+Scoreboard:
+  Title: "&3&lMaths Analisys"
+  Lines:
+    - "&7Hello, i'm &9MathsAnalisys"
+    - "&7How Are you ?"
+    - "&7It's ok ?"
+    - "&7Follow me in my github &9MathsAnalisys"
+Spawn: ""
+Database:
+  ip: "localhost"
+  port: 27017
